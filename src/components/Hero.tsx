@@ -74,7 +74,6 @@ export default function Hero() {
         {/* Animated Moving Grid */}
         <motion.div 
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.05 }}
           className="absolute inset-0"
           style={{
             backgroundImage: `
@@ -84,6 +83,7 @@ export default function Hero() {
             backgroundSize: '80px 80px',
           }}
           animate={{
+            opacity: 0.05,
             y: [0, -80],
           }}
           transition={{

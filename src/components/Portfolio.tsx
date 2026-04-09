@@ -5,7 +5,7 @@ import { useRef, useState, useEffect } from 'react'
 import Image from 'next/image'
 
 const videos = [
-  '/trabalhos/chef.mp4',
+  'https://docs.google.com/uc?export=download&id=1ZaX2dDenDJwzQ9IWouo5S3EO0v_rqavU',
   '/trabalhos/magico.mp4',
   '/trabalhos/magico2.mp4',
   '/trabalhos/pascoa.mp4',

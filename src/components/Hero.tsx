@@ -100,21 +100,59 @@ export default function Hero() {
 
       {/* Main Content */}
       <div className="relative z-10 container mx-auto px-6">
-        <div className="grid lg:grid-cols-[1.1fr,0.9fr] gap-0 items-start lg:items-center min-h-[100dvh] pt-24 pb-12">
-          {/* Left - Narrative */}
-          <div className="text-center lg:text-left order-2 lg:order-1 relative -mt-8 md:-mt-12 lg:mt-0">
+        <div className="flex flex-col lg:grid lg:grid-cols-[1.1fr,0.9fr] gap-12 lg:gap-0 items-center min-h-[100dvh] pt-24 pb-12">
+          
+          {/* Top (Mobile) / Right (Desktop) - Visual Impact */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="relative flex justify-center items-center order-1 lg:order-2 w-full"
+          >
+            {/* Dynamic Background Effect */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <motion.div
+                animate={{
+                  scale: [1, 1.1, 1],
+                  opacity: [0.2, 0.3, 0.2],
+                }}
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+                className="w-[150%] aspect-square bg-[radial-gradient(circle,rgba(208,254,3,0.15)_0%,transparent_70%)] blur-[60px]"
+              />
+            </div>
+
+            <motion.div 
+              className="relative w-full max-w-[320px] sm:max-w-[400px] lg:max-w-[550px] transition-all duration-500"
+            >
+              <div className="absolute -inset-4 bg-highlight/10 blur-3xl rounded-full opacity-20" />
+              <div className="relative">
+                <div className="lg:hidden">
+                  <Image src="/mobile.png" alt="Mobile View" width={600} height={800} priority className="w-full h-auto" />
+                </div>
+                <div className="hidden lg:block">
+                  <Image src="/desktop.png" alt="Desktop View" width={1000} height={750} priority className="w-full h-auto" />
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+
+          {/* Bottom (Mobile) / Left (Desktop) - Narrative */}
+          <div className="text-center lg:text-left order-2 lg:order-1 relative w-full">
             {/* Headline */}
             <motion.h1
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="font-display text-[1.75rem] sm:text-4xl md:text-5xl lg:text-7xl font-black mb-6 leading-[1.1] tracking-tighter uppercase"
+              className="font-display text-[2.2rem] sm:text-4xl md:text-5xl lg:text-7xl font-black mb-6 leading-[1.1] tracking-tighter uppercase"
             >
               <span className="block text-white/90">
                 Seu negócio merece
               </span>
-              <span className="relative inline-grid mt-1">
-                {/* Space Reserver (Longest Phrase) */}
+              <span className="relative inline-grid mt-2">
                 <span className="invisible row-start-1 col-start-1 text-highlight pointer-events-none uppercase">
                   Visibilidade
                 </span>
@@ -134,7 +172,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-gray-light/80 text-sm md:text-base max-w-xl mx-auto lg:mx-0 mb-6 leading-relaxed"
+              className="text-gray-light/80 text-base md:text-lg max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed"
             >
               Você tem o produto. A Qreativ cria o que faz ele <span className="text-white font-black italic">vender de verdade</span>. No digital, você tem 3 segundos. <span className="text-white font-bold">Nós dominamos cada um deles.</span>
             </motion.p>

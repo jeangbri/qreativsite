@@ -20,16 +20,17 @@ const videos = [
 ]
 
 const posts = [
-  '/posts/658701628_17863632648611766_5544231773633722736_n..jpg',
-  '/posts/655252744_17862198558611766_3685586511930404231_n..jpg',
-  '/posts/655242637_17862198717611766_8447186557141624552_n..jpg',
-  '/posts/654488325_17861884740611766_4153197001643860453_n..jpg',
-  '/posts/654012605_17861885061611766_6525714173058918573_n..jpg',
-  '/posts/653959787_17861884821611766_4041223107288725546_n..jpg',
-  '/posts/653697088_17861499288611766_993877022476749707_n..jpg',
-  '/posts/652775998_17861350518611766_3171918151095602498_n..jpg',
-  '/posts/652772773_17861884764611766_3498379700267384930_n..jpg',
+  '/posts/650919048_17860682568611766_3678501764544150578_n..jpg',
   '/posts/650965563_17860973745611766_3659243065798493942_n..jpg',
+  '/posts/652685307_17860973970611766_5344659390220569886_n..jpg',
+  '/posts/652768336_17861674674611766_799018299389686727_n..jpg',
+  '/posts/652768430_17861674539611766_1258814495511718127_n..jpg',
+  '/posts/652769495_17861674584611766_2741043352081082086_n..jpg',
+  '/posts/652772655_17861349162611766_2544393745160962302_n..jpg',
+  '/posts/652775998_17861350518611766_3171918151095602498_n..jpg',
+  '/posts/653697088_17861499288611766_993877022476749707_n..jpg',
+  '/posts/653959787_17861884821611766_4041223107288725546_n..jpg',
+  '/posts/658701628_17863632648611766_5544231773633722736_n..jpg',
 ]
 
 export default function Portfolio() {
@@ -108,7 +109,7 @@ export default function Portfolio() {
             >
               {[...posts, ...posts].map((post, idx) => (
                 <div key={idx} className="relative group aspect-square rounded-[2rem] overflow-hidden border border-white/5 bg-white/5 shadow-2xl">
-                  <Image src={post} alt="Work" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
+                  <Image src={post} alt="Work" fill className="object-contain group-hover:scale-105 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
                 </div>
               ))}

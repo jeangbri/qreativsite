@@ -5,6 +5,7 @@ import { useRef, useState, useEffect } from 'react'
 import Image from 'next/image'
 
 const videos = [
+  'https://www.youtube.com/embed/uuoMFLfjuI0?autoplay=1&mute=1&loop=1&playlist=uuoMFLfjuI0&controls=0&modestbranding=1&showinfo=0',
   'https://docs.google.com/uc?export=download&id=1ZaX2dDenDJwzQ9IWouo5S3EO0v_rqavU',
   '/trabalhos/magico.mp4',
   '/trabalhos/magico2.mp4',
@@ -75,10 +76,18 @@ export default function Portfolio() {
               {[...videos, ...videos].map((vid, idx) => (
                 <div 
                   key={idx} 
-                  className="relative group cursor-pointer aspect-[9/16] rounded-[2rem] overflow-hidden border border-white/5 bg-white/5 shadow-2xl"
+                  className="relative group cursor-pointer aspect-[9/16] rounded-xl overflow-hidden bg-black/50 shadow-2xl"
                   onClick={() => setSelectedVideo(vid)}
                 >
-                  <video src={vid} autoPlay muted loop playsInline className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                  {vid.includes('youtube.com') ? (
+                    <iframe 
+                      src={vid}
+                      className="w-full h-full object-cover pointer-events-none scale-105 group-hover:scale-110 transition-transform duration-700"
+                      allow="autoplay; encrypted-media"
+                    />
+                  ) : (
+                    <video src={vid} autoPlay muted loop playsInline className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                  )}
                   <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors" />
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                     <div className="w-16 h-16 rounded-full bg-highlight flex items-center justify-center shadow-[0_0_30px_rgba(208,254,3,0.3)]">
@@ -165,7 +174,16 @@ export default function Portfolio() {
                 onClick={() => setSelectedVideo(null)} 
                 className="absolute top-6 right-6 z-20 w-10 h-10 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center text-white"
               >✕</button>
-              <video src={selectedVideo} autoPlay controls playsInline className="w-full h-full object-cover" />
+              {selectedVideo.includes('youtube.com') ? (
+                <iframe 
+                  src={selectedVideo.replace('autoplay=1&mute=1', 'autoplay=1&mute=0&controls=1')} 
+                  className="w-full h-full"
+                  allow="autoplay; encrypted-media; picture-in-picture"
+                  allowFullScreen
+                />
+              ) : (
+                <video src={selectedVideo} autoPlay controls playsInline className="w-full h-full object-cover" />
+              )}
             </motion.div>
           </motion.div>
         )}

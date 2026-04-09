@@ -114,7 +114,7 @@ export default function LatestWork() {
                       display: idx === currentIndex ? 'block' : 'none'
                     }}
                     transition={{ duration: 0.5, ease: 'easeOut' }}
-                    className="absolute inset-0 rounded-2xl overflow-hidden shadow-2xl shadow-highlight/20"
+                    className="absolute inset-0 rounded-xl overflow-hidden shadow-2xl shadow-highlight/20 bg-black/50"
                   >
                     <Image
                       src={post}

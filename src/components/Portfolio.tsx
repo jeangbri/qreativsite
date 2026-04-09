@@ -108,7 +108,7 @@ export default function Portfolio() {
               }}
             >
               {[...posts, ...posts].map((post, idx) => (
-                <div key={idx} className="relative group aspect-square rounded-[2rem] overflow-hidden border border-white/5 bg-white/5 shadow-2xl">
+                <div key={idx} className="relative group aspect-square rounded-xl overflow-hidden bg-black/50 shadow-2xl">
                   <Image src={post} alt="Work" fill className="object-contain group-hover:scale-105 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
                 </div>

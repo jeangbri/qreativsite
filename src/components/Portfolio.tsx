@@ -33,6 +33,7 @@ const posts = [
 export default function Portfolio() {
   const [activeShowroom, setActiveShowroom] = useState<'videos' | 'posts' | null>(null)
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null)
+  const [selectedImage, setSelectedImage] = useState<string | null>(null)
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
@@ -145,10 +146,11 @@ export default function Portfolio() {
                   {posts.map((post, idx) => (
                     <motion.div 
                       key={idx}
-                      initial={{ opacity: 0, y: 20 }}
+                      initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: idx * 0.05 }}
-                      className="relative aspect-square rounded-2xl overflow-hidden bg-zinc-900 group"
+                      transition={{ delay: idx * 0.03 }}
+                      className="relative aspect-square rounded-2xl overflow-hidden bg-zinc-900 group cursor-pointer"
+                      onClick={() => setSelectedImage(post)}
                     >
                       <Image src={post} alt="Design Work" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                     </motion.div>
@@ -200,6 +202,41 @@ export default function Portfolio() {
         )}
       </AnimatePresence>
 
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }} 
+            animate={{ opacity: 1 }} 
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[130] flex items-center justify-center bg-black/95 p-4 md:p-12 backdrop-blur-xl"
+            onClick={() => setSelectedImage(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }} 
+              animate={{ scale: 1, opacity: 1 }} 
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="relative w-full max-w-5xl h-full flex items-center justify-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="relative w-full h-full">
+                <Image 
+                  src={selectedImage} 
+                  alt="Design Strategic View" 
+                  fill 
+                  className="object-contain"
+                  priority
+                />
+              </div>
+              <button 
+                onClick={() => setSelectedImage(null)} 
+                className="absolute top-0 -right-4 md:-right-12 z-50 w-12 h-12 rounded-full bg-white text-black flex items-center justify-center hover:bg-highlight transition-all shadow-xl"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"/></svg>
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   )
 }

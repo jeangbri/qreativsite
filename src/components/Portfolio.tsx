@@ -5,19 +5,15 @@ import { useRef, useState, useEffect } from 'react'
 import Image from 'next/image'
 
 const videos = [
-  'https://www.youtube.com/embed/uuoMFLfjuI0?autoplay=1&mute=1&loop=1&playlist=uuoMFLfjuI0&controls=0&modestbranding=1&showinfo=0',
-  'https://docs.google.com/uc?export=download&id=1ZaX2dDenDJwzQ9IWouo5S3EO0v_rqavU',
-  '/trabalhos/magico.mp4',
-  '/trabalhos/magico2.mp4',
-  '/trabalhos/pascoa.mp4',
-  '/trabalhos/superman.mp4',
-  '/trabalhos/Ruiva.mp4',
-  '/trabalhos/Em casa.mp4',
-  '/trabalhos/loir praia.mp4',
-  '/trabalhos/na rua.mp4',
-  '/trabalhos/no quarto.mp4',
-  '/trabalhos/Sala de casa.mp4',
-  '/trabalhos/Cafeteria.mp4',
+  'https://www.youtube.com/embed/6g-8RZBaVNg?autoplay=1&mute=1&loop=1&playlist=6g-8RZBaVNg&controls=0&modestbranding=1&rel=0&iv_load_policy=3',
+  'https://www.youtube.com/embed/16Hah97nxfs?autoplay=1&mute=1&loop=1&playlist=16Hah97nxfs&controls=0&modestbranding=1&rel=0&iv_load_policy=3',
+  'https://www.youtube.com/embed/pXW_0QgR0QM?autoplay=1&mute=1&loop=1&playlist=pXW_0QgR0QM&controls=0&modestbranding=1&rel=0&iv_load_policy=3',
+  'https://www.youtube.com/embed/3t4YGVApSeE?autoplay=1&mute=1&loop=1&playlist=3t4YGVApSeE&controls=0&modestbranding=1&rel=0&iv_load_policy=3',
+  'https://www.youtube.com/embed/rsIsOjLJY2U?autoplay=1&mute=1&loop=1&playlist=rsIsOjLJY2U&controls=0&modestbranding=1&rel=0&iv_load_policy=3',
+  'https://www.youtube.com/embed/dkNeMVstsh8?autoplay=1&mute=1&loop=1&playlist=dkNeMVstsh8&controls=0&modestbranding=1&rel=0&iv_load_policy=3',
+  'https://www.youtube.com/embed/RIzq_rHqEII?autoplay=1&mute=1&loop=1&playlist=RIzq_rHqEII&controls=0&modestbranding=1&rel=0&iv_load_policy=3',
+  'https://www.youtube.com/embed/eDNC6dlL0HQ?autoplay=1&mute=1&loop=1&playlist=eDNC6dlL0HQ&controls=0&modestbranding=1&rel=0&iv_load_policy=3',
+  'https://www.youtube.com/embed/uuoMFLfjuI0?autoplay=1&mute=1&loop=1&playlist=uuoMFLfjuI0&controls=0&modestbranding=1&rel=0&iv_load_policy=3',
 ]
 
 const posts = [
@@ -35,165 +31,175 @@ const posts = [
 ]
 
 export default function Portfolio() {
+  const [activeShowroom, setActiveShowroom] = useState<'videos' | 'posts' | null>(null)
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null)
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
+  const getVideoId = (url: string) => {
+    const match = url.match(/embed\/([^/?]+)/)
+    return match ? match[1] : ''
+  }
+
   return (
-    <section id="portfolio" className="pt-16 pb-0 md:pt-24 md:pb-0 relative bg-black overflow-hidden" ref={ref}>
-      {/* Dynamic Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-zinc-900/20 to-black" />
+    <section id="portfolio" className="py-20 md:py-32 relative bg-black overflow-hidden" ref={ref}>
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-zinc-900/10 to-black" />
       
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={isInView ? { opacity: 1, scale: 1 } : {}}
-          className="text-center mb-24"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          className="text-center mb-6 md:mb-10"
         >
-          <h2 className="font-display text-5xl md:text-8xl font-black text-white tracking-tighter leading-none uppercase mb-6">
-            DOMINAÇÃO <br/>
-            <span className="text-highlight">VISUAL</span>
+          <h2 className="font-display text-5xl md:text-8xl font-black text-white tracking-tighter leading-none uppercase mb-2">
+            NOSSO <span className="text-highlight">PORTFÓLIO</span>
           </h2>
           <p className="text-gray-light/40 text-sm md:text-base uppercase tracking-[0.5em] font-bold">
-            Posts que geram desejo. Anúncios que geram lucro.
+            SELECIONE UMA CATEGORIA PARA EXPLORAR
           </p>
         </motion.div>
 
-        {/* Infinite Parallax Streams */}
-        <div className="relative h-[800px] md:h-[1000px] flex gap-8 md:gap-16 justify-center overflow-hidden mask-fade-vertical">
+        <div className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-4xl mx-auto">
           
-          {/* Column 1: Fast Downward Stream (Videos) */}
-          <div className="flex-1 max-w-[450px]">
-            <motion.div 
-              className="flex flex-col gap-10"
-              animate={{ y: [0, -1200] }}
-              transition={{ 
-                duration: 45,
-                repeat: Infinity,
-                ease: "linear"
-              }}
-            >
-              {[...videos, ...videos].map((vid, idx) => (
-                <div 
-                  key={idx} 
-                  className="relative group cursor-pointer aspect-[9/16] rounded-xl overflow-hidden bg-black/50 shadow-2xl"
-                  onClick={() => setSelectedVideo(vid)}
-                >
-                  {vid.includes('youtube.com') ? (
-                    <iframe 
-                      src={vid}
-                      className="w-full h-full object-cover pointer-events-none scale-105 group-hover:scale-110 transition-transform duration-700"
-                      allow="autoplay; encrypted-media"
-                    />
-                  ) : (
-                    <video src={vid} autoPlay muted loop playsInline className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                  )}
-                  <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors" />
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="w-16 h-16 rounded-full bg-highlight flex items-center justify-center shadow-[0_0_30px_rgba(208,254,3,0.3)]">
-                       <svg className="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </motion.div>
-          </div>
+          {/* Card Category: VIDEOS UGC */}
+          <motion.div 
+            whileHover={{ y: -10 }}
+            className="relative group aspect-[9/16] rounded-[2rem] overflow-hidden bg-black cursor-pointer border border-white/5"
+            onClick={() => setActiveShowroom('videos')}
+          >
+            <img 
+              src="https://i.imgur.com/oBIrtXy.png"
+              alt="Videos UGC"
+              className="w-full h-full object-contain opacity-80 group-hover:opacity-100 transition-all duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+          </motion.div>
 
-          {/* Minimalist Central Divider */}
-          <div className="hidden md:flex flex-col items-center justify-center relative">
-             <div className="w-px h-full bg-gradient-to-b from-transparent via-highlight/20 to-transparent" />
-             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-highlight shadow-[0_0_15px_#d0fe03]" />
-          </div>
-
-          {/* Column 2: Medium Upward Stream (Posts) */}
-          <div className="flex-1 max-w-[450px]">
-            <motion.div 
-              className="flex flex-col gap-10"
-              animate={{ y: [-1200, 0] }}
-              transition={{ 
-                duration: 40,
-                repeat: Infinity,
-                ease: "linear"
-              }}
-            >
-              {[...posts, ...posts].map((post, idx) => (
-                <div key={idx} className="relative group aspect-square rounded-xl overflow-hidden bg-black/50 shadow-2xl">
-                  <Image src={post} alt="Work" fill className="object-contain group-hover:scale-105 transition-transform duration-700" />
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
-                </div>
-              ))}
-            </motion.div>
-          </div>
+          {/* Card Category: DESIGN ESTRATÉGICO */}
+          <motion.div 
+            whileHover={{ y: -10 }}
+            className="relative group aspect-[9/16] rounded-[2rem] overflow-hidden bg-black cursor-pointer border border-white/5"
+            onClick={() => setActiveShowroom('posts')}
+          >
+            <Image 
+              src="https://i.imgur.com/IGViXqI.png"
+              alt="Design Estratégico"
+              fill
+              className="object-contain opacity-80 group-hover:opacity-100 transition-all duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+          </motion.div>
 
         </div>
-
-        {/* Global Control Over the Streams */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ delay: 1 }}
-          className="mt-16 text-center relative"
-        >
-          <div className="inline-block relative">
-            <div className="absolute inset-0 bg-highlight/20 blur-3xl rounded-full" />
-            <motion.a 
-              href="#cta" 
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-highlight rounded-xl font-black text-base uppercase overflow-hidden shadow-[0_20px_40px_rgba(208,254,3,0.1)] transition-all"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-white/40 via-transparent to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-              <span className="relative z-10 flex items-center gap-3 text-black">
-                QUERO ESSA ESTRATÉGIA
-                <motion.span
-                  animate={{ x: [0, 4, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                >
-                  →
-                </motion.span>
-              </span>
-            </motion.a>
-          </div>
-          <p className="text-white/20 text-[10px] font-black uppercase tracking-widest mt-8">Explore o fluxo. Sinta a escala.</p>
-        </motion.div>
       </div>
+
+      {/* SHOWROOM OVERLAY */}
+      <AnimatePresence>
+        {activeShowroom && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] bg-black pointer-events-auto overflow-y-auto"
+          >
+            <div className="sticky top-0 z-50 p-6 md:p-10 flex justify-between items-center bg-black/50 backdrop-blur-xl">
+               <h4 className="font-display text-2xl md:text-4xl font-black text-white uppercase italic">
+                 {activeShowroom === 'videos' ? <>VÍDEOS <span className="text-highlight">UGC</span></> : <>DESIGN <span className="text-highlight">ESTRATÉGICO</span></>}
+               </h4>
+               <button 
+                onClick={() => setActiveShowroom(null)}
+                className="flex items-center gap-3 px-6 py-3 rounded-full bg-white/5 hover:bg-white/10 transition-colors group"
+               >
+                 <span className="text-white font-bold text-xs uppercase tracking-widest">FECHAR</span>
+                 <span className="w-8 h-8 rounded-full bg-highlight flex items-center justify-center text-black group-hover:scale-110 transition-transform">✕</span>
+               </button>
+            </div>
+
+            <div className="container mx-auto px-6 py-20">
+              {activeShowroom === 'videos' ? (
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                  {videos.map((vid, idx) => (
+                    <motion.div 
+                      key={idx}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: idx * 0.05 }}
+                      className="relative group aspect-[9/16] rounded-2xl overflow-hidden bg-zinc-900 cursor-pointer"
+                      onClick={() => setSelectedVideo(vid)}
+                    >
+                      <img 
+                        src={`https://img.youtube.com/vi/${getVideoId(vid)}/maxresdefault.jpg`}
+                        alt="Project"
+                        className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all"
+                      />
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-12 h-12 rounded-full bg-highlight flex items-center justify-center text-black opacity-0 group-hover:opacity-100 transition-opacity">
+                          <svg className="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              ) : (
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                  {posts.map((post, idx) => (
+                    <motion.div 
+                      key={idx}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: idx * 0.05 }}
+                      className="relative aspect-square rounded-2xl overflow-hidden bg-zinc-900 group"
+                    >
+                      <Image src={post} alt="Design Work" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                    </motion.div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <AnimatePresence>
         {selectedVideo && (
           <motion.div
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 p-6"
+            initial={{ opacity: 0 }} 
+            animate={{ opacity: 1 }} 
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[120] flex items-center justify-center bg-black/90 p-6 backdrop-blur-xl"
             onClick={() => setSelectedVideo(null)}
           >
             <motion.div
-              initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }}
-              className="relative w-full max-w-lg aspect-[9/16] rounded-3xl overflow-hidden"
+              initial={{ scale: 0.9, y: 20 }} 
+              animate={{ scale: 1, y: 0 }} 
+              exit={{ scale: 0.9, y: 20 }}
+              className="relative w-full max-w-[340px] aspect-[9/16] rounded-[2.5rem] overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)] bg-black border border-white/10"
               onClick={(e) => e.stopPropagation()}
             >
+              {/* Máscara para esconder UI do YouTube */}
+              <div className="absolute inset-0 z-10 pointer-events-none border-[6px] border-black rounded-[2.5rem]" />
+              
+              <div className="w-full h-full overflow-hidden relative">
+                <iframe 
+                  src={`${selectedVideo.replace('autoplay=1&mute=1', 'autoplay=1&mute=0')}&controls=1&rel=0&modestbranding=1&iv_load_policy=3&showinfo=0&disablekb=1`} 
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[115%] h-[115%]"
+                  allow="autoplay; encrypted-media; picture-in-picture"
+                  loading="lazy"
+                />
+              </div>
+
+              {/* Botão de Fechar Premium */}
               <button 
                 onClick={() => setSelectedVideo(null)} 
-                className="absolute top-6 right-6 z-20 w-10 h-10 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center text-white"
-              >✕</button>
-              {selectedVideo.includes('youtube.com') ? (
-                <iframe 
-                  src={selectedVideo.replace('autoplay=1&mute=1', 'autoplay=1&mute=0&controls=1')} 
-                  className="w-full h-full"
-                  allow="autoplay; encrypted-media; picture-in-picture"
-                  allowFullScreen
-                />
-              ) : (
-                <video src={selectedVideo} autoPlay controls playsInline className="w-full h-full object-cover" />
-              )}
+                className="absolute top-6 right-6 z-30 w-12 h-12 rounded-full bg-white text-black flex items-center justify-center hover:bg-highlight transition-all shadow-xl active:scale-90"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"/></svg>
+              </button>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      <style jsx>{`
-        .mask-fade-vertical {
-          mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
-        }
-      `}</style>
     </section>
   )
 }

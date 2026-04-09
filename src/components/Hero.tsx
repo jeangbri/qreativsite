@@ -102,24 +102,24 @@ export default function Hero() {
       <div className="relative z-10 container mx-auto px-6">
         <div className="grid lg:grid-cols-[1.1fr,0.9fr] gap-0 items-start lg:items-center min-h-[100dvh] pt-24 pb-12">
           {/* Left - Narrative */}
-          <div className="text-center lg:text-left order-2 lg:order-1 relative -mt-16 lg:mt-0">
+          <div className="text-center lg:text-left order-2 lg:order-1 relative -mt-8 md:-mt-12 lg:mt-0">
             {/* Headline */}
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black mb-6 leading-[1.1] tracking-tighter uppercase"
+              className="font-display text-[1.75rem] sm:text-4xl md:text-5xl lg:text-7xl font-black mb-6 leading-[1.1] tracking-tighter uppercase"
             >
               <span className="block text-white/90">
                 Seu negócio merece
               </span>
               <span className="relative inline-grid mt-1">
                 {/* Space Reserver (Longest Phrase) */}
-                <span className="invisible row-start-1 col-start-1 text-highlight pointer-events-none uppercase whitespace-nowrap">
+                <span className="invisible row-start-1 col-start-1 text-highlight pointer-events-none uppercase">
                   Visibilidade
                 </span>
-                <span className="relative z-10 text-highlight row-start-1 col-start-1 uppercase whitespace-nowrap">
-                  <TypedText phrases={['Visibilidade', 'Estratégia', 'Qualidade']} delay={1000} />
+                <span className="relative z-10 text-highlight row-start-1 col-start-1 uppercase">
+                  <TypedText phrases={['Estratégia', 'Visibilidade', 'Autoridade']} delay={1000} />
                 </span>
                 <motion.span
                   className="absolute bottom-1 left-0 h-[20%] bg-highlight/20 -z-0"

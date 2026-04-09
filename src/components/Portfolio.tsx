@@ -59,7 +59,7 @@ export default function Portfolio() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-4 md:gap-8 lg:gap-12 max-w-4xl mx-auto">
           
           {/* Card Category: VIDEOS UGC */}
           <motion.div 

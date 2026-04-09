@@ -30,38 +30,8 @@ export default function AnimatedBackground() {
       <motion.div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] will-change-transform"
         animate={{
-          scale: [1, 1.1, 1],
-          opacity: [0.05, 0.08, 0.05],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-      >
-        <div className="w-full h-full bg-highlight rounded-full blur-[120px]" />
-      </motion.div>
-
-      <motion.div
-        className="absolute -top-40 -right-40 w-[400px] h-[400px] will-change-transform"
-        animate={{
-          x: [0, 30, 0],
-          y: [0, 20, 0],
-        }}
-        transition={{
-          duration: 15,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-      >
-        <div className="w-full h-full bg-highlight rounded-full blur-[100px] opacity-20" />
-      </motion.div>
-
-      <motion.div
-        className="absolute -bottom-40 -left-40 w-[500px] h-[500px] will-change-transform"
-        animate={{
-          x: [0, -20, 0],
-          y: [0, -30, 0],
+          scale: [1, 1.05, 1],
+          opacity: [0.03, 0.05, 0.03],
         }}
         transition={{
           duration: 20,
@@ -69,7 +39,37 @@ export default function AnimatedBackground() {
           ease: 'easeInOut',
         }}
       >
-        <div className="w-full h-full bg-highlight rounded-full blur-[100px] opacity-15" />
+        <div className="w-full h-full bg-highlight rounded-full blur-[60px]" />
+      </motion.div>
+
+      <motion.div
+        className="absolute -top-40 -right-40 w-[400px] h-[400px] will-change-transform"
+        animate={{
+          x: [0, 20, 0],
+          y: [0, 10, 0],
+        }}
+        transition={{
+          duration: 25,
+          repeat: Infinity,
+          ease: 'easeInOut',
+        }}
+      >
+        <div className="w-full h-full bg-highlight rounded-full blur-[50px] opacity-10" />
+      </motion.div>
+
+      <motion.div
+        className="absolute -bottom-40 -left-40 w-[500px] h-[500px] will-change-transform"
+        animate={{
+          x: [0, -15, 0],
+          y: [0, -20, 0],
+        }}
+        transition={{
+          duration: 30,
+          repeat: Infinity,
+          ease: 'easeInOut',
+        }}
+      >
+        <div className="w-full h-full bg-highlight rounded-full blur-[50px] opacity-10" />
       </motion.div>
 
       {particles.map((p) => (

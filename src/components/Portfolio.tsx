@@ -47,7 +47,7 @@ export default function Portfolio() {
       
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           className="text-center mb-6 md:mb-10"
         >
@@ -121,9 +121,9 @@ export default function Portfolio() {
                   {videos.map((vid, idx) => (
                     <motion.div 
                       key={idx}
-                      initial={{ opacity: 0, y: 20 }}
+                      initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: idx * 0.05 }}
+                      transition={{ delay: idx * 0.03 }}
                       className="relative group aspect-[9/16] rounded-2xl overflow-hidden bg-zinc-900 cursor-pointer"
                       onClick={() => setSelectedVideo(vid)}
                     >
@@ -166,7 +166,7 @@ export default function Portfolio() {
             initial={{ opacity: 0 }} 
             animate={{ opacity: 1 }} 
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[120] flex items-center justify-center bg-black/90 p-6 backdrop-blur-xl"
+            className="fixed inset-0 z-[120] flex items-center justify-center bg-black/90 p-6 backdrop-blur-md"
             onClick={() => setSelectedVideo(null)}
           >
             <motion.div

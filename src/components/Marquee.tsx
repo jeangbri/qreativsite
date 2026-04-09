@@ -23,7 +23,7 @@ export default function Marquee() {
           x: {
             repeat: Infinity,
             repeatType: 'loop',
-            duration: 10,
+            duration: 40,
             ease: 'linear',
           },
         }}

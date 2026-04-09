@@ -87,15 +87,15 @@ export default function Hero() {
             y: [0, -80],
           }}
           transition={{
-            duration: 20,
+            duration: 40,
             repeat: Infinity,
             ease: "linear"
           }}
         />
         
         {/* Cinematic Lighting */}
-        <div className="absolute -top-[10%] -left-[10%] w-[50%] h-[50%] bg-highlight/10 rounded-full blur-[120px] animate-pulse" />
-        <div className="absolute -bottom-[10%] -right-[10%] w-[50%] h-[50%] bg-highlight/5 rounded-full blur-[120px]" />
+        <div className="absolute -top-[10%] -left-[10%] w-[50%] h-[50%] bg-highlight/5 rounded-full blur-[60px]" />
+        <div className="absolute -bottom-[10%] -right-[10%] w-[50%] h-[50%] bg-highlight/5 rounded-full blur-[60px]" />
       </div>
 
       {/* Main Content */}

@@ -213,49 +213,6 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Right - Visual Impact */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="relative flex justify-center items-center order-1 lg:order-2"
-          >
-            {/* Hero Main Image with Tilt effect */}
-            {/* Dynamic Background Effect */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <motion.div
-                animate={{
-                  scale: [1, 1.2, 1],
-                  opacity: [0.3, 0.5, 0.3],
-                  rotate: [0, 180, 360],
-                }}
-                transition={{
-                  duration: 10,
-                  repeat: Infinity,
-                  ease: "linear",
-                }}
-                className="w-[150%] aspect-square bg-[radial-gradient(circle,rgba(208,254,3,0.15)_0%,transparent_70%)] blur-[80px]"
-              />
-            </div>
-
-            <motion.div 
-              whileHover={{ rotateY: 5, rotateX: -5 }}
-              style={{ transformStyle: "preserve-3d" }}
-              className="relative w-full max-w-[300px] sm:max-w-[400px] lg:max-w-[550px] lg:aspect-[4/3] group transition-all duration-500"
-            >
-              <div className="absolute -inset-4 bg-highlight/20 blur-3xl rounded-full opacity-20 group-hover:opacity-40 transition-opacity" />
-              <div className="relative">
-                <div className="lg:hidden">
-                  <Image src="/1mobile2.png" alt="Mobile View" width={500} height={1000} priority className="w-full h-auto" />
-                </div>
-                <div className="hidden lg:block">
-                  <Image src="/desktop.png" alt="Desktop View" width={1000} height={750} priority className="w-full h-auto" />
-                </div>
-                {/* Glass overlay */}
-              </div>
-
-            </motion.div>
-          </motion.div>
         </div>
       </div>
 

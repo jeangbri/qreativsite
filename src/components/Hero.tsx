@@ -128,12 +128,12 @@ export default function Hero() {
             <motion.div 
               className="relative w-full max-w-[320px] sm:max-w-[400px] lg:max-w-[550px] transition-all duration-500"
             >
-              <div className="absolute -inset-4 bg-highlight/10 blur-3xl rounded-full opacity-20" />
+              <div className="absolute -inset-4 bg-highlight/5 blur-3xl rounded-full opacity-10" />
               <div className="relative">
-                <div className="lg:hidden">
+                <div className="lg:hidden mix-blend-screen">
                   <Image src="/mobile.png" alt="Mobile View" width={600} height={800} priority className="w-full h-auto" />
                 </div>
-                <div className="hidden lg:block">
+                <div className="hidden lg:block mix-blend-screen">
                   <Image src="/desktop.png" alt="Desktop View" width={1000} height={750} priority className="w-full h-auto" />
                 </div>
               </div>

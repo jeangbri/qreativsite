@@ -137,7 +137,11 @@ export default function Hero() {
                     width={600} 
                     height={800} 
                     priority 
-                    className="w-full h-auto mix-blend-screen contrast-[1.1] brightness-[1.1]" 
+                    className="w-full h-auto mix-blend-screen contrast-[1.1] opacity-90" 
+                    style={{ 
+                      maskImage: 'radial-gradient(circle, black 60%, transparent 95%)',
+                      WebkitMaskImage: 'radial-gradient(circle, black 60%, transparent 95%)'
+                    }}
                   />
                 </div>
                 <div className="hidden lg:block">
@@ -147,7 +151,11 @@ export default function Hero() {
                     width={1000} 
                     height={750} 
                     priority 
-                    className="w-full h-auto mix-blend-screen contrast-[1.1] brightness-[1.1]" 
+                    className="w-full h-auto mix-blend-screen contrast-[1.1] opacity-90" 
+                    style={{ 
+                      maskImage: 'radial-gradient(circle, black 70%, transparent 95%)',
+                      WebkitMaskImage: 'radial-gradient(circle, black 70%, transparent 95%)'
+                    }}
                   />
                 </div>
               </div>
@@ -230,16 +238,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Floating Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-      >
-        <span className="text-[10px] uppercase tracking-[0.4em] text-white/20 font-bold">Scroll para explorar</span>
-        <div className="w-px h-12 bg-gradient-to-b from-highlight to-transparent" />
-      </motion.div>
     </section>
   )
 }

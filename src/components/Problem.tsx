@@ -169,7 +169,7 @@ export default function Problem() {
               {[
                 'Criativos exclusivos para ads',
                 'Copy humanizada, sem refugo de ChatGPT',
-                'Perfil organizado, transformando seguidor em clientes',
+                'Perfil organizado, transformando seguidores em clientes',
                 'Site completo e profissional'
               ].map((item, i) => (
                 <motion.div
